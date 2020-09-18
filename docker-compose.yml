@@ -1,0 +1,49 @@
+version: '2.0'
+
+services:
+    mongodb:
+        image: mongo:latest
+        container_name: project_mongodb
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: eddie
+            MONGO_INITDB_ROOT_PASSWORD: eb102
+            MONGO_INITDB_DATABASE: Whiskey
+        ports:
+            - 27017:27017
+        volumes:
+            - mongodb-data:/data/db            
+            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro  
+    
+    mysql:
+        image: mysql/mysql-server
+        container_name: project_mysql
+        restart: always
+        environment: 
+            MYSQL_USER: eddie
+            MYSQL_PASSWORD: eb102
+            MYSQL_ROOT_PASSWORD: zdtb0626
+            MYSQL_DATABASE: Whiskey
+        volumes:
+            - ./mysql/db:/var/lib/mysql
+        ports:
+            - 3306:3306
+    
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+
+    redis:
+        image: redis
+        restart: always
+        command: redis-server /usr/local/etc/redis/redis.conf
+        ports:
+            - 6379:6379
+        volumes:
+            - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+            - ./redis/db/:/data/
+
+volumes:
+    mongodb-data:

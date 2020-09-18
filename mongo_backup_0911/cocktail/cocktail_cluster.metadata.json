@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"cocktail.cocktail_cluster"}],"uuid":"bc0fa190a3c541d0a2a1e170502f48bd"}
