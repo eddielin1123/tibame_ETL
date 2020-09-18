@@ -1,2 +1,2 @@
-# tibame_ETL-whiskey-
+# data ETL for Tibame project
 include docker
