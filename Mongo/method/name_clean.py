@@ -1,8 +1,8 @@
 from tqdm import tqdm
-
+from Mongo import db_data
 
 '''============清洗[name]欄位==========='''
-def nameWash(datas):
+def nameWash(datas=db_data):
     error_list = []
     fixed_list = []
     new_data = []
@@ -13,7 +13,7 @@ def nameWash(datas):
         except Exception as e:
             error_list.append(data)
             data_name = data['whiskey_name']
-            print(f'預期外錯誤: {e}\n發現錯誤資料: {data_name}')
+            # print(f'預期外錯誤: {e}\n發現錯誤資料: {data_name}')
 
         if 'Ol??Major' in name.strip():
             data['name'] = "OL\' MAJOR"

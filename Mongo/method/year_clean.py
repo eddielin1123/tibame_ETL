@@ -33,7 +33,7 @@ def yearWash(datas):
         return f'尚有{len(error_list)}錯誤資料未處理'
 
 '''============錯誤紀錄============='''
-def error_checker(self, error_list):
+def error_checker(error_list):
     if error_list == []:
         return True
     else:
